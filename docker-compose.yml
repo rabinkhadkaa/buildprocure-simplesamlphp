@@ -1,0 +1,12 @@
+version: "3.8"
+
+services:
+  simplesaml:
+    build: .
+    container_name: simplesamlphp
+    ports:
+      - "8082:80"
+    volumes:
+      - .:/var/www/app
+    environment:
+      - SIMPLESAML_BASEURLPATH=/simplesaml/
