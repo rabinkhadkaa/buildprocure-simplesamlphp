@@ -234,7 +234,8 @@ $config = [
      * Example:
      *   'trusted.url.domains' => ['sp.example.com', 'app.example.com'],
      */
-    'trusted.url.domains' => [],
+    'canonicalprotocol' => 'https',
+    'trusted.url.domains' => ['buildprocure.com'],
 
     /*
      * Enable regular expression matching of trusted.url.domains.
