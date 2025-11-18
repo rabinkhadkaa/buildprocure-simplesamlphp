@@ -22,10 +22,11 @@ COPY . /var/www/app
 WORKDIR /var/www/app
 
 # Set Apache DocumentRoot to SimpleSAMLphp public folder
-RUN sed -i 's!/var/www/html!/var/www/app/simplesamlphp/public!g' /etc/apache2/sites-available/000-default.conf
-
-# Append custom Apache config if needed
+# Replace the default virtual host with our custom config
 COPY simplesamlphp-config.conf /etc/apache2/sites-available/000-default.conf
+
+# Enable the site (important!)
+RUN a2ensite 000-default.conf
 
 # Prepare directories for SimpleSAMLphp
 RUN mkdir -p /tmp/simplesaml /var/cache/simplesamlphp && \
