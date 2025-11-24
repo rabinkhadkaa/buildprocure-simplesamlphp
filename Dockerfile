@@ -14,8 +14,11 @@ RUN apt-get update && apt-get install -y \
     unzip \
     && docker-php-ext-install zip intl bcmath dom mbstring xml opcache
 
+#Copy ssl cert files
+COPY _.buildprocure.com_private_key.key /etc/ssl/certs/_.buildprocure.com_private_key.key
+COPY buildprocure.com_combined.crt /etc/ssl/certs/buildprocure.com_combined.crt
 # Enable Apache modules
-RUN a2enmod rewrite headers
+RUN a2enmod rewrite ssl headers
 
 # Copy entire project into container
 COPY . /var/www/app
@@ -40,7 +43,7 @@ RUN echo "session.save_path=/tmp/simplesaml" > /usr/local/etc/php/conf.d/session
 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
 
 # Expose port
-EXPOSE 8080
+EXPOSE 443
 
 # Start Apache
 CMD ["apache2-foreground"]
