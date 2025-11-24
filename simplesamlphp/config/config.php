@@ -31,7 +31,7 @@ $config = [
      * external url, no matter where you come from (direct access or via the
      * reverse proxy).
      */
-    'baseurlpath' => 'simplesamlphp/',
+    'baseurlpath' => 'https://buildprocure.com/simplesamlphp/',
     'tempdir' => '/tmp/simplesaml',
 
     /*
@@ -235,6 +235,7 @@ $config = [
      *   'trusted.url.domains' => ['sp.example.com', 'app.example.com'],
      */
     'canonicalprotocol' => 'https',
+    'canonicalport' => 443,
     'trusted.url.domains' => ['buildprocure.com'],
 
     /*
