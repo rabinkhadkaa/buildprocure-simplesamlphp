@@ -61,7 +61,7 @@ $config = [
         'saml:SP',
 
         // The entity ID of this SP.
-        'entityID' => 'http://buildprocure.com/simplesamlphp/simplesaml/module.php/saml/sp/metadata.php/auth0',
+        'entityID' => 'https://buildprocure.com/simplesamlphp/module.php/saml/sp/metadata.php/auth0',
 
         // The entity ID of the IdP this SP should contact.
         // Can be NULL/unset, in which case the user will be shown a list of available IdPs.
@@ -80,11 +80,11 @@ $config = [
         'NameIDPolicy' => [
             'Format' => 'urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress',
             'AllowCreate' => true,
-            'SPNameQualifier' => 'http://buildprocure.com/simplesamlphp/simplesaml/module.php/saml/sp/metadata.php/auth0',
+            'SPNameQualifier' => 'https://buildprocure.com/simplesamlphp/module.php/saml/sp/metadata.php/auth0',
         ],
 
         // Optional: explicitly set ACS URL (SimpleSAMLphp usually sets this automatically)
-        'AssertionConsumerServiceURL' => 'http://buildprocure.com/simplesamlphp/simplesaml/module.php/saml/sp/saml2-acs.php/auth0',
+        'AssertionConsumerServiceURL' => 'https://buildprocure.com/simplesamlphp/module.php/saml/sp/saml2-acs.php/auth0',
 
     ],
 
