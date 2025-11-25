@@ -1,6 +1,5 @@
 <?php
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
+
 
 // Correct path to autoload
 require_once __DIR__ . '/../vendor/autoload.php';
@@ -31,6 +30,8 @@ try {
         $phone_verified = isset($attributes['http://schemas.auth0.com/phone_verified'][0]) ? (int)$attributes['http://schemas.auth0.com/phone_verified'][0] : 0;
         $nickname = $attributes['http://schemas.auth0.com/nickname'][0] ?? null;
         $picture = $attributes['http://schemas.auth0.com/picture'][0] ?? null;
+        $raw_attributes = json_encode($attributes, JSON_UNESCAPED_SLASHES);
+
        
         $stmt = $pdo->prepare("
             INSERT INTO saml_users
