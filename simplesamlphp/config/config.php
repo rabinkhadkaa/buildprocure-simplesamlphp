@@ -664,12 +664,13 @@ $config = [
     /*
      * Option to override the default settings for the session cookie name
      */
-    'session.cookie.name' => 'SimpleSAMLSessionID',
-    'session.cookie.samesite' => 'Lax',
+    'session.cookie.name' => 'SimpleSAMLSESSID',
+    'session.cookie.samesite' => 'None',
     'session.phpsession.name' => 'SimpleSAMLSESSID',
     'session.phpsession.savepath' => '/tmp/simplesaml',
     'session.phpsession.httponly' => true,
     'session.savepath' => '/tmp/simplesaml',
+    'session.cookie.secure' => true,
 
     /*
      * Expiration time for the session cookie, in seconds.
