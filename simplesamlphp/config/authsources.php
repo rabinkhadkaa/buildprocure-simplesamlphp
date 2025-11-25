@@ -60,33 +60,24 @@ $config = [
     'auth0' => [
         'saml:SP',
 
-        // The entity ID of this SP.
-        'entityID' => 'http://buildprocure.com/simplesamlphp/simplesaml/module.php/saml/sp/metadata.php/auth0',
+        'entityID' => 'https://buildprocure.com/simplesaml/module.php/saml/sp/metadata.php/auth0',
 
-        // The entity ID of the IdP this SP should contact.
-        // Can be NULL/unset, in which case the user will be shown a list of available IdPs.
         'idp' => 'urn:dev-6xu0s3t43xer76kc.us.auth0.com',
 
-        // The URL to the discovery service.
-        // Can be NULL/unset, in which case a builtin discovery service will be used.
         'discoURL' => null,
-        'privatekey' => '/var/www/app/simplesamlphp/cert/saml.pem',      // relative to SimpleSAMLphp root
+
+        'privatekey' => '/var/www/app/simplesamlphp/cert/saml.pem',
         'certificate' => '/var/www/app/simplesamlphp/cert/saml.crt',
+
         'redirect.sign' => true,
         'sign.logout' => true,
         'sign.authnrequest' => true,
 
-        // NameIDPolicy MUST use proper casing for v2.x
         'NameIDPolicy' => [
             'Format' => 'urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress',
             'AllowCreate' => true,
-            'SPNameQualifier' => 'http://buildprocure.com/simplesamlphp/simplesaml/module.php/saml/sp/metadata.php/auth0',
+            'SPNameQualifier' => 'https://buildprocure.com/simplesaml/module.php/saml/sp/metadata.php/auth0',
         ],
-
-        // Optional: explicitly set ACS URL (SimpleSAMLphp usually sets this automatically)
-        'AssertionConsumerServiceURL' => 'http://buildprocure.com/simplesamlphp/simplesaml/module.php/saml/sp/saml2-acs.php/auth0',
-
-    ],
-
+    ]
 
 ];
