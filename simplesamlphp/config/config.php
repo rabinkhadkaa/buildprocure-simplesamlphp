@@ -347,7 +347,7 @@ $config = [
      * When 'errorreporting' is enabled, a form will be presented for the user to report
      * the error to 'technicalcontact_email'.
      */
-    'showerrors' => false,
+    'showerrors' => true,
     'errorreporting' => true,
 
     /*
@@ -441,7 +441,7 @@ $config = [
      */
     'logging.level' => SimpleSAML\Logger::DEBUG,
     'logging.handler' => 'file',
-    'logging.logfile' => __DIR__.'/../logs/simplesamlphp.log',
+    'logging.dir' => '/var/log/simplesamlphp/',
 
     /*
      * Specify the format of the logs. Its use varies depending on the log handler used (for instance, you cannot
