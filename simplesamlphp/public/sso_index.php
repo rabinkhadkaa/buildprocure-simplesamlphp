@@ -10,7 +10,7 @@ try {
     if ($as->isAuthenticated()) {
         $attributes = $as->getAttributes();
 
-        include_once  __DIR__ .'function.php'; // Logging helper
+        include_once  __DIR__ .'/function.php'; // Logging helper
         $message = "Received Attributes:\n";
         logSSOFlow($message . print_r($attributes, true));
 
