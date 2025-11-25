@@ -60,8 +60,10 @@ $config = [
     'auth0' => [
         'saml:SP',
 
-        'entityID' => 'https://buildprocure.com/simplesaml/module.php/saml/sp/metadata.php/auth0',
+        // Updated entityID to match audience in assertion
+        'entityID' => 'https://buildprocure.com/simplesaml/module.php/saml/sp/metadata.php',
 
+        // IdP entity
         'idp' => 'urn:dev-6xu0s3t43xer76kc.us.auth0.com',
 
         'discoURL' => null,
@@ -73,11 +75,15 @@ $config = [
         'sign.logout' => true,
         'sign.authnrequest' => true,
 
+        // NameIDPolicy updated
         'NameIDPolicy' => [
             'Format' => 'urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress',
             'AllowCreate' => true,
-            'SPNameQualifier' => 'https://buildprocure.com/simplesaml/module.php/saml/sp/metadata.php/auth0',
+            'SPNameQualifier' => 'https://buildprocure.com/simplesaml/module.php/saml/sp/metadata.php',
         ],
-    ]
+
+        // Explicit ACS URL (optional, recommended)
+        'AssertionConsumerServiceURL' => 'https://buildprocure.com/simplesaml/module.php/saml/sp/saml2-acs.php',
+    ],
 
 ];
