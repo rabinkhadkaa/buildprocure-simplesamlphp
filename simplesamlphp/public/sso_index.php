@@ -10,11 +10,11 @@ try {
     if ($as->isAuthenticated()) {
         $attributes = $as->getAttributes();
 
-        include_once __DIR__ . '/function.php'; // Logging helper
+        include_once  __DIR__ .'function.php'; // Logging helper
         $message = "Received Attributes:\n";
         logSSOFlow($message . print_r($attributes, true));
 
-        include_once __DIR__ . '/_dbconnect.php'; // Database connection
+        include_once __DIR__ . '/../../_dbconnect.php'; // Database connection
          // Save Attributes to a variable or process as needed
         $user_id = $attributes['http://schemas.auth0.com/user_id'][0] ?? '';
         $email = $attributes['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress'][0] ?? '';
