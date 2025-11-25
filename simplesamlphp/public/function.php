@@ -1,6 +1,6 @@
 <?php
 if(!function_exists('logSSOFlow')){
-function logSSOFlow($message, $logFile = '/var/www/app/simplesamlphp/log/sso_flow_log.log') {
+function logSSOFlow($message, $logFile = '/log/sso_flow_log.log') {
     // Ensure the logs directory exists
     if (!is_dir(dirname($logFile))) {
         mkdir(dirname($logFile), 0755, true);
