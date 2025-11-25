@@ -31,7 +31,7 @@ RUN a2dissite 000-default.conf
 # Prepare directories for SimpleSAMLphp
 RUN mkdir -p /tmp/simplesaml var/www/app/simplesamlphp/log/ /var/cache/simplesamlphp && \
     chmod -R 777 /tmp/simplesaml var/www/app/simplesamlphp/log/ /var/cache/simplesamlphp && \
-    chmod -R www-data:www-data /tmp/simplesaml var/www/app/simplesamlphp/log/ /var/cache/simplesamlphp
+    chown -R www-data:www-data /tmp/simplesaml var/www/app/simplesamlphp/log/ /var/cache/simplesamlphp
 
 # PHP session config for SimpleSAMLphp
 RUN echo "session.save_path=/tmp/simplesaml" > /usr/local/etc/php/conf.d/sessions.ini \
