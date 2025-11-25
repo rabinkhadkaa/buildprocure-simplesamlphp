@@ -33,7 +33,7 @@ try {
         $raw_attributes = json_encode($attributes, JSON_UNESCAPED_SLASHES);
 
        
-        $stmt = $pdo->prepare("
+        $stmt = $conn->prepare("
             INSERT INTO saml_users
             (user_id, email, username, roles, connection, provider, created_at, updated_at, last_password_reset, email_verified, phone_number, phone_verified, nickname, picture, raw_attributes)
             VALUES
@@ -53,24 +53,27 @@ try {
                 picture = VALUES(picture),
                 raw_attributes = VALUES(raw_attributes)
         ");
-        $stmt->execute([
-            ':user_id' => $user_id,
-            ':email' => $email,
-            ':username' => $username,
-            ':roles' => $roles,
-            ':connection' => $connection,
-            ':provider' => $provider,
-            ':created_at' => $created_at,
-            ':updated_at' => $updated_at,
-            ':last_password_reset' => $last_password_reset,
-            ':email_verified' => $email_verified,
-            ':phone_number' => $phone_number,
-            ':phone_verified' => $phone_verified,
-            ':nickname' => $nickname,
-            ':picture' => $picture,
-            ':raw_attributes' => $raw_attributes,
+        $stmt->bind_param([
+            "sssssssssiissss",
+            $user_id,
+            $email,
+            $username,
+            $roles,
+            $connection,
+            $provider,
+            $created_at,
+            $updated_at,
+            $last_password_reset,
+            $email_verified,
+            $phone_number,
+            $phone_verified,
+            $nickname,
+            $picture,
+            $raw_attributes
         ]);
-
+        $stmt->execute();
+        $stmt->close();
+        
         $message = "User $username (ID: $user_id) processed and stored in database.";
         logSSOFlow($message);
 
