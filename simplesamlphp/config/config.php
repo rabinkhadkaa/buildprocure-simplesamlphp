@@ -31,7 +31,7 @@ $config = [
      * external url, no matter where you come from (direct access or via the
      * reverse proxy).
      */
-    'baseurlpath' => 'https://buildprocure.com/simplesamlphp/',
+    'baseurlpath' => 'https://buildprocure.com/simplesaml/',
     'tempdir' => '/tmp/simplesaml',
 
     /*
