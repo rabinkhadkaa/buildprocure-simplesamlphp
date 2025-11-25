@@ -35,9 +35,10 @@ try {
        
         $stmt = $conn->prepare("
             INSERT INTO saml_users
-            (user_id, email, username, roles, connection, provider, created_at, updated_at, last_password_reset, email_verified, phone_number, phone_verified, nickname, picture, raw_attributes)
+            (user_id, email, username, roles, connection, provider, created_at, updated_at, last_password_reset,
+            email_verified, phone_number, phone_verified, nickname, picture, raw_attributes)
             VALUES
-            (:user_id, :email, :username, :roles, :connection, :provider, :created_at, :updated_at, :last_password_reset, :email_verified, :phone_number, :phone_verified, :nickname, :picture, :raw_attributes)
+            (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             ON DUPLICATE KEY UPDATE
                 email = VALUES(email),
                 username = VALUES(username),
@@ -52,8 +53,9 @@ try {
                 nickname = VALUES(nickname),
                 picture = VALUES(picture),
                 raw_attributes = VALUES(raw_attributes)
-        ");
-        $stmt->bind_param([
+            ");
+
+        $stmt->bind_param(
             "sssssssssiissss",
             $user_id,
             $email,
@@ -70,10 +72,10 @@ try {
             $nickname,
             $picture,
             $raw_attributes
-        ]);
+        );
         $stmt->execute();
         $stmt->close();
-        
+
         $message = "User $username (ID: $user_id) processed and stored in database.";
         logSSOFlow($message);
 
