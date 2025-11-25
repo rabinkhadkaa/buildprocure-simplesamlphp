@@ -1,17 +1,16 @@
 <?php
 if (!function_exists('logSSOFlow')) {
-    function logSSOFlow($message) {
+    function logSSOFlow($msg)
+    {
+        $logDir = "/var/www/app/simplesamlphp/log";
 
-       
-    $logDir = "/var/www/app/simplesamlphp/log";
-    $logFile = "$logDir/sso_flow_log.log";
+        if (!is_dir($logDir)) {
+            mkdir($logDir, 0777, true);
+        }
 
-    if (!is_dir($logDir)) {
-        mkdir($logDir, 0777, true);
+        $file = $logDir . "/sso_flow_log.log";
+        file_put_contents($file, date("Y-m-d H:i:s") . " " . $msg . "\n", FILE_APPEND);
     }
 
-    $timestamp = date("Y-m-d H:i:s");
-    file_put_contents($logFile, "[$timestamp] $message\n", FILE_APPEND | LOCK_EX);
-    }
 }
 ?>
